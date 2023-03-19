@@ -1,3 +1,3 @@
 # MyLibrary
 
-A description of this package.
+頻繁に使うコードをパッケージにまとめました。
