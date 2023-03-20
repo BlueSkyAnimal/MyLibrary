@@ -14,10 +14,6 @@ public extension String {
 #elseif os(macOS)
         NSPasteboard.general.clearContents()
         NSPasteboard.general.setString(self, forType: .string)
-#elseif os(tvOS)
-        UIPasteboard.general.string = self
-#elseif os(watchOS)
-        UIPasteboard.general.string = self
 #endif
     }
 }

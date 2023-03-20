@@ -7,18 +7,18 @@
 
 import SwiftUI
 
+#if os(iOS)
+public typealias SystemImage = UIImage
+#elseif os(macOS)
+public typealias SystemImage = NSImage
+#elseif os(tvOS)
+public typealias SystemImage = UIImage
+#elseif os(watchOS)
+public typealias SystemImage = UIImage
+#endif
+
 @available(iOS 13.0, macOS 11.0, tvOS 13.0, watchOS 6.0, *)
 public extension Image {
-#if os(iOS)
-    typealias SystemImage = UIImage
-#elseif os(macOS)
-    typealias SystemImage = NSImage
-#elseif os(tvOS)
-    typealias SystemImage = UIImage
-#elseif os(watchOS)
-    typealias SystemImage = UIImage
-#endif
-    
     init(data: Data) {
         if let systemImage = SystemImage(data: data) {
 #if os(iOS)
