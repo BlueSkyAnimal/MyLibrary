@@ -11,6 +11,8 @@ SwiftUIアプリ開発で頻繁に使うコードをパッケージにまとめ�
 - watchOS 6.0
 
 ## 中身
+- AppDelegate
+    - AppDelegate (macOS)
 - View
     - PresentedWindowManager (macOS)
     - VisualEffectView (macOS)
