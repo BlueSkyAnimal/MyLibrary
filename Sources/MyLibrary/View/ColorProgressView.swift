@@ -26,7 +26,7 @@ public struct ColorProgressView: View {
         }
     }
     
-    init(tint: Color = .accentColor, width: Double = 5) {
+    public init(tint: Color = .accentColor, width: Double = 5) {
         self.tint = tint
         self.width = width
     }
