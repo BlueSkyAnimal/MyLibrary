@@ -8,8 +8,8 @@
 import SwiftUI
 
 #if os(macOS)
-class AppDelegate: NSObject, NSApplicationDelegate {
-    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+public class AppDelegate: NSObject, NSApplicationDelegate {
+    public func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
         return true
     }
 }
