@@ -20,7 +20,7 @@ public extension FileManager {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
     }
     
-    static func save(_ name: String, data: Data, directory: URL?) throws {
+    static func save(_ name: String, data: Data, directory: URL?) {
         guard let directory = directory else { return }
         
         var file: URL? {
@@ -35,10 +35,14 @@ public extension FileManager {
         
         guard let file = file else { return }
         
-        try data.write(to: file, options: .atomic)
+        do {
+            try data.write(to: file, options: .atomic)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
-    static func read(_ name: String, directory: URL?) throws -> Data? {
+    static func read(_ name: String, directory: URL?) -> Data? {
         guard let directory = directory else { return nil }
         
         var file: URL? {
@@ -53,10 +57,15 @@ public extension FileManager {
         
         guard let file = file else { return nil }
         
-        return try Data(contentsOf: file)
+        do {
+            return try Data(contentsOf: file)
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
     }
     
-    static func remove(_ name: String, directory: URL?) throws {
+    static func remove(_ name: String, directory: URL?) {
         guard let directory = directory else { return }
         
         var file: URL? {
@@ -71,7 +80,11 @@ public extension FileManager {
         
         guard let file = file else { return }
         
-        try self.default.removeItem(at: file)
+        do {
+            try self.default.removeItem(at: file)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }
 
