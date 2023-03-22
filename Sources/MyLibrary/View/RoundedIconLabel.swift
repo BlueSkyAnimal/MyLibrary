@@ -1,5 +1,5 @@
 //
-//  RoundedIconLabelStyle.swift
+//  RoundedIconLabel.swift
 //  
 //
 //  Created by 千葉和義 on 2023/03/19.
@@ -8,7 +8,7 @@
 import SwiftUI
 
 @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
-public struct RoundedIconLabelStyle: View {
+public struct RoundedIconLabel: View {
     var foreground: Color
     var background: Color
     var systemIcon: String
