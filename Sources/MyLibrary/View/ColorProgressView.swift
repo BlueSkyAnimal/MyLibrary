@@ -13,7 +13,7 @@ public struct ColorProgressView: View {
     @State var back: Double = 0
     var tint: Color
     var width: Double
-    var frame: CGSize
+    var size: Double
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     func progress() {
@@ -27,10 +27,10 @@ public struct ColorProgressView: View {
         }
     }
     
-    public init(tint: Color = .accentColor, width: Double = 5, frame: CGSize = .init(width: 50, height: 50)) {
+    public init(tint: Color = .accentColor, width: Double = 5, size: Double = 50) {
         self.tint = tint
         self.width = width
-        self.frame = frame
+        self.size = size
     }
     
     public var body: some View {
@@ -40,7 +40,7 @@ public struct ColorProgressView: View {
                 .stroke(tint, style: .init(lineWidth: width, lineCap: .round))
                 .rotationEffect(.degrees(-90))
         }
-        .frame(width: frame.width, height: frame.height)
+        .frame(width: size, height: size)
         .padding()
         .onAppear {
             progress()
