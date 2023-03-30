@@ -17,8 +17,12 @@ SwiftUIアプリ開発で頻繁に使うコードをパッケージにまとめ�
     - PresentedWindowManager (macOS)
     - VisualEffectView (macOS)
     - RoundedIconLabelStyle
+    - ColorProgressView
 - extension
     - FileManager
     - Image
     - String
     - View
+
+## 備考
+- macOS 13.3では、withAnimationの不具合により動作しないものがあります。
