@@ -26,6 +26,7 @@ public struct RoundedIconLabel: View {
             if #available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *) {
                 Image(systemName: systemIcon)
                     .resizable()
+                    .scaledToFit()
                     .foregroundColor(foreground)
 #if os(macOS)
                     .shadow(color: .black.opacity(0.3), radius: 0.5, y: 0.2)
@@ -40,6 +41,7 @@ public struct RoundedIconLabel: View {
             } else if #available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *) {
                 Image(systemName: systemIcon)
                     .resizable()
+                    .scaledToFit()
                     .foregroundColor(foreground)
 #if os(macOS)
                     .shadow(color: .black.opacity(0.3), radius: 0.5, y: 0.2)
