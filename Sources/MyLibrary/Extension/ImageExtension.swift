@@ -19,19 +19,16 @@ public typealias SystemImage = UIImage
 
 @available(iOS 13.0, macOS 11.0, tvOS 13.0, watchOS 6.0, *)
 public extension Image {
-    init(data: Data) {
-        if let systemImage = SystemImage(data: data) {
+    init?(data: Data) {
+        guard let systemImage = SystemImage(data: data) else { return nil }
 #if os(iOS)
-            self.init(uiImage: systemImage)
+        self.init(uiImage: systemImage)
 #elseif os(macOS)
-            self.init(nsImage: systemImage)
+        self.init(nsImage: systemImage)
 #elseif os(tvOS)
-            self.init(uiImage: systemImage)
+        self.init(uiImage: systemImage)
 #elseif os(watchOS)
-            self.init(uiImage: systemImage)
+        self.init(uiImage: systemImage)
 #endif
-        } else {
-            self.init(systemName: "photo")
-        }
     }
 }

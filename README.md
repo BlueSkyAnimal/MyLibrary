@@ -23,6 +23,7 @@ SwiftUIアプリ開発で頻繁に使うコードをパッケージにまとめ�
     - Image
     - String
     - View
+    - Codable
 
 ## 備考
 - macOS 13.3では、withAnimationの不具合により動作しないものがあります。

@@ -19,12 +19,8 @@ public struct ColorProgressView: View {
     func progress() {
         front = 0
         back = 0
-        withAnimation(.easeInOut(duration: 1)) {
-            front = 1
-        }
-        withAnimation(.easeInOut(duration: 0.5).delay(0.5)) {
-            back = 1
-        }
+        withAnimation(.easeInOut(duration: 1)) { front = 1 }
+        withAnimation(.easeInOut(duration: 0.5).delay(0.5)) { back = 1 }
     }
     
     public init(tint: Color = .accentColor, width: Double = 5, size: Double = 50) {
@@ -42,9 +38,7 @@ public struct ColorProgressView: View {
         }
         .frame(width: size, height: size)
         .padding()
-        .onAppear {
-            progress()
-        }
+        .onAppear { progress() }
         .onReceive(timer) { _ in
             progress()
         }

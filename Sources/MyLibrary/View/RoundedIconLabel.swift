@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+@available(iOS 13.0, macOS 11.0, tvOS 13.0, watchOS 6.0, *)
 public struct RoundedIconLabel: View {
     var foreground: Color
     var background: Color
@@ -24,35 +24,31 @@ public struct RoundedIconLabel: View {
     public var body: some View {
         HStack {
             if #available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *) {
-                Image(systemName: systemIcon)
-                    .resizable()
-                    .scaledToFit()
-                    .foregroundColor(foreground)
-#if os(macOS)
-                    .shadow(color: .black.opacity(0.3), radius: 0.5, y: 0.2)
-#endif
-                    .padding(3)
-                    .frame(width: 20, height: 20)
+                plain
 #if os(macOS)
                     .background(background.gradient)
 #endif
                     .cornerRadius(5)
                     .shadow(color: .black.opacity(0.2), radius: 1, y: 0.5)
-            } else if #available(iOS 15.0, macOS 12.0, tvOS 15.0, watchOS 8.0, *) {
-                Image(systemName: systemIcon)
-                    .resizable()
-                    .scaledToFit()
-                    .foregroundColor(foreground)
-#if os(macOS)
-                    .shadow(color: .black.opacity(0.3), radius: 0.5, y: 0.2)
-#endif
-                    .padding(3)
-                    .frame(width: 20, height: 20)
+            } else {
+                plain
                     .background(background)
                     .cornerRadius(5)
                     .shadow(color: .black.opacity(0.2), radius: 1, y: 0.5)
             }
             Text(title)
         }
+    }
+    
+    private var plain: some View {
+        Image(systemName: systemIcon)
+            .resizable()
+            .scaledToFit()
+            .foregroundColor(foreground)
+#if os(macOS)
+            .shadow(color: .black.opacity(0.3), radius: 0.5, y: 0.2)
+#endif
+            .padding(3)
+            .frame(width: 20, height: 20)
     }
 }

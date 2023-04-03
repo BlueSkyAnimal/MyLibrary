@@ -20,7 +20,7 @@ public extension FileManager {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
     }
     
-    static func save(_ name: String, data: Data, directory: URL? = FileManager.documentDirectory) {
+    static func save(_ name: String, data: Data, directory: URL? = documentDirectory) {
         guard let directory = directory else { return }
         
         var file: URL? {
@@ -42,7 +42,7 @@ public extension FileManager {
         }
     }
     
-    static func read(_ name: String, directory: URL? = FileManager.documentDirectory) -> Data? {
+    static func read(_ name: String, directory: URL? = documentDirectory) -> Data? {
         guard let directory = directory else { return nil }
         
         var file: URL? {
@@ -65,7 +65,7 @@ public extension FileManager {
         }
     }
     
-    static func remove(_ name: String, directory: URL? = FileManager.documentDirectory) {
+    static func remove(_ name: String, directory: URL? = documentDirectory) {
         guard let directory = directory else { return }
         
         var file: URL? {

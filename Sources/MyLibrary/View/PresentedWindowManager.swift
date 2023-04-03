@@ -16,17 +16,13 @@ public struct PresentedWindowManager: NSViewRepresentable {
         let view = NSView()
         view.layer?.backgroundColor = .clear
         DispatchQueue.main.async {
-            if let window = view.window {
-                action(window)
-            }
+            if let window = view.window { action(window) }
         }
         return view
     }
     
     public func updateNSView(_ nsView: NSViewType, context: Context) {
-        if let window = nsView.window {
-            action(window)
-        }
+        if let window = nsView.window { action(window) }
     }
 }
 #endif
