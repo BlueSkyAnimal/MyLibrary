@@ -53,8 +53,12 @@ public extension View {
     }
     
     @ViewBuilder
-    func transform<Transform: View>(_ transform: (Self) -> Transform) -> some View {
-        transform(self)
+    func transform<Transform: View>(_ transform: (Self) -> Transform?) -> some View {
+        if let transformed = transform(self) {
+            transformed
+        } else {
+            self
+        }
     }
 }
 #endif
