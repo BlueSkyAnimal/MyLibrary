@@ -46,16 +46,29 @@ public struct RoundedIconLabel: View {
         }
     }
     
+    @ViewBuilder
     private var plain: some View {
-        Image(systemName: systemIcon)
-            .resizable()
-            .scaledToFit()
-            .foregroundColor(foreground)
-            .fontWeight(.regular)
+        if #available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *) {
+            Image(systemName: systemIcon)
+                .resizable()
+                .scaledToFit()
+                .foregroundColor(foreground)
+                .fontWeight(.regular)
 #if os(macOS)
-            .shadow(color: .black.opacity(0.3), radius: 0.5, y: 0.2)
+                .shadow(color: .black.opacity(0.3), radius: 0.5, y: 0.2)
 #endif
-            .padding(3)
-            .frame(width: 20, height: 20)
+                .padding(3)
+                .frame(width: 20, height: 20)
+        } else {
+            Image(systemName: systemIcon)
+                .resizable()
+                .scaledToFit()
+                .foregroundColor(foreground)
+#if os(macOS)
+                .shadow(color: .black.opacity(0.3), radius: 0.5, y: 0.2)
+#endif
+                .padding(3)
+                .frame(width: 20, height: 20)
+        }
     }
 }
