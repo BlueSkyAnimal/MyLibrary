@@ -51,6 +51,7 @@ public struct RoundedIconLabel: View {
             .resizable()
             .scaledToFit()
             .foregroundColor(foreground)
+            .fontWeight(.regular)
 #if os(macOS)
             .shadow(color: .black.opacity(0.3), radius: 0.5, y: 0.2)
 #endif
