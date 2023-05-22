@@ -25,16 +25,22 @@ public struct RoundedIconLabel: View {
         HStack {
             if #available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *) {
                 plain
-#if os(macOS)
+#if os(iOS)
+                    .background(background)
+#elseif os(macOS)
                     .background(background.gradient)
 #endif
                     .cornerRadius(5)
+#if os(macOS)
                     .shadow(color: .black.opacity(0.2), radius: 1, y: 0.5)
+#endif
             } else {
                 plain
                     .background(background)
                     .cornerRadius(5)
+#if os(macOS)
                     .shadow(color: .black.opacity(0.2), radius: 1, y: 0.5)
+#endif
             }
             Text(title)
         }
