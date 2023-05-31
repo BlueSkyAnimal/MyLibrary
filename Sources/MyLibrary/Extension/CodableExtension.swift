@@ -28,4 +28,16 @@ public extension Encodable {
             return nil
         }
     }
+    
+    func saveToFileManager(_ name: String) {
+        guard let data = encoded() else { return }
+        FileManager.save(name, data: data)
+    }
 }
+
+public func readFromFileManager<T: Codable>(_ name: String) -> T? {
+    guard let data = FileManager.read(name),
+          let decoded = data.decoded(T.self) else { return nil }
+    return decoded
+}
+
