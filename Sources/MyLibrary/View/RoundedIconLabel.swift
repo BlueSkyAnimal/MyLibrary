@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-@available(iOS 13.0, macOS 11.0, tvOS 13.0, watchOS 6.0, *)
+@available(iOS 13.0, macOS 11.0, tvOS 13.0, watchOS 6.0, xrOS 1.0, *)
 public struct RoundedIconLabel: View {
     var foreground: Color
     var background: Color

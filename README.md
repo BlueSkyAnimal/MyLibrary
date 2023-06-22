@@ -9,6 +9,7 @@ SwiftUIアプリ開発で頻繁に使うコードをパッケージにまとめ�
 - macOS 11.0
 - tvOS 13.0
 - watchOS 6.0
+- visionOS(xrOS) 1.0
 
 ## 中身
 - AppDelegate
@@ -25,5 +26,3 @@ SwiftUIアプリ開発で頻繁に使うコードをパッケージにまとめ�
     - View
     - Codable
 
-## 備考
-- macOS 13.3では、withAnimationの不具合により動作しないものがあります。

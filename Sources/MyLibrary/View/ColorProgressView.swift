@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-@available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+@available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, xrOS 1.0, *)
 public struct ColorProgressView: View {
     @State var front: Double = 0
     @State var back: Double = 0
