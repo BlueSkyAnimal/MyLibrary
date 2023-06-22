@@ -11,18 +11,16 @@ SwiftUIアプリ開発で頻繁に使うコードをパッケージにまとめ�
 - watchOS 6.0
 - visionOS(xrOS) 1.0
 
-## 中身
-- AppDelegate
-    - AppDelegate (macOS)
-- View
-    - PresentedWindowManager (macOS)
-    - VisualEffectView (macOS)
-    - RoundedIconLabelStyle
-    - ColorProgressView
-- extension
-    - FileManager
-    - Image
-    - String
-    - View
-    - Codable
-
+## 内容
+### AppDelegate (macOS)
+- 最後のウインドウが閉じられた時アプリを終了する
+### PresentedWindowManager (macOS)
+- NSWindowを取得する
+### VisualEffectView (macOS)
+- ウインドウの背景をぼかす
+### RoundedIconLabelStyle
+- 設定アプリ風のラベルテンプレート
+### ColorProgressView
+- withAnimationを用いた読み込みインジケータ
+### @Preserve
+- UserDefaults、FileManagerを用いたデータ永続化をPropertyWrapperにまとめた

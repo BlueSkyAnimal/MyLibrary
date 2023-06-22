@@ -8,20 +8,10 @@
 import SwiftUI
 
 public extension FileManager {
-    static var libraryDirectory: URL? {
-        FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first
-    }
-    
-    static var applicationSupportDirectory: URL? {
-        FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first
-    }
-    
-    static var documentDirectory: URL? {
-        FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-    }
-    
-    static func save(_ name: String, data: Data, directory: URL? = documentDirectory) {
-        guard let directory = directory else { return }
+    static func save(_ name: String, data: Data, directory: SearchPathDirectory = .documentDirectory) {
+        let directory = FileManager.default.urls(for: directory, in: .userDomainMask).first
+        
+        guard let directory else { return }
         
         var file: URL? {
             if #available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *) {
@@ -42,7 +32,9 @@ public extension FileManager {
         }
     }
     
-    static func read(_ name: String, directory: URL? = documentDirectory) -> Data? {
+    static func read(_ name: String, directory: SearchPathDirectory = .documentDirectory) -> Data? {
+        let directory = FileManager.default.urls(for: directory, in: .userDomainMask).first
+        
         guard let directory = directory else { return nil }
         
         var file: URL? {
@@ -65,7 +57,9 @@ public extension FileManager {
         }
     }
     
-    static func remove(_ name: String, directory: URL? = documentDirectory) {
+    static func remove(_ name: String, directory: SearchPathDirectory = .documentDirectory) {
+        let directory = FileManager.default.urls(for: directory, in: .userDomainMask).first
+        
         guard let directory = directory else { return }
         
         var file: URL? {
