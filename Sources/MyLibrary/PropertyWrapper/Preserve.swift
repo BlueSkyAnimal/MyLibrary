@@ -10,7 +10,7 @@ import SwiftUI
 @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, xrOS 1.0, *)
 @propertyWrapper
 public struct Preserve<Value: Codable>: DynamicProperty {
-    enum Store {
+    public enum Store {
         case userDefaults(UserDefaults = .standard)
         case fileManager(FileManager.SearchPathDirectory = .documentDirectory)
     }
