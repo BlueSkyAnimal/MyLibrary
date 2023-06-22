@@ -19,7 +19,7 @@ public struct Preserve<Value: Codable>: DynamicProperty {
     private let defaultValue: Value
     private let store: Store
     
-    init(_ key: String, defaultValue: Value, store: Store = .userDefaults(.standard)) {
+    public init(_ key: String, defaultValue: Value, store: Store = .userDefaults(.standard)) {
         self.key = key
         self.defaultValue = defaultValue
         self.store = store
