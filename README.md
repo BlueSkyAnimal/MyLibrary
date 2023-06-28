@@ -12,8 +12,6 @@ SwiftUIアプリ開発で頻繁に使うコードをパッケージにまとめ�
 - visionOS(xrOS) 1.0
 
 ## 内容
-### AppDelegate (macOS)
-- 最後のウインドウが閉じられた時アプリを終了する
 ### PresentedWindowManager (macOS)
 - NSWindowを取得する
 ### VisualEffectView (macOS)
