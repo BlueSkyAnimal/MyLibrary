@@ -21,4 +21,4 @@ SwiftUIアプリ開発で頻繁に使うコードをパッケージにまとめ�
 ### ColorProgressView
 - withAnimationを用いた読み込みインジケータ
 ### @Preserve
-- UserDefaults、FileManagerを用いたデータ永続化をPropertyWrapperにまとめた
+- UserDefaults、FileManagerを用いたデータ永続化をclassにまとめた
