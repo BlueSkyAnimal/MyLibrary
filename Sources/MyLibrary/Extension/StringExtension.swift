@@ -9,13 +9,11 @@ import SwiftUI
 
 public extension String {
     func copy() {
-#if os(iOS)
+#if os(iOS) || os(xrOS)
         UIPasteboard.general.string = self
 #elseif os(macOS)
         NSPasteboard.general.clearContents()
         NSPasteboard.general.setString(self, forType: .string)
-#elseif os(xrOS)
-        UIPasteboard.general.string = self
 #endif
     }
 }

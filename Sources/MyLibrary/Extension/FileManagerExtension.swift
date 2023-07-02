@@ -14,7 +14,7 @@ public extension FileManager {
         guard let directory else { return nil }
         
         var file: URL? {
-            if #available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *) {
+            if #available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, xrOS 1.0, *) {
                 return directory.appending(component: name)
             } else if #available(iOS 14.0, macOS 11.0, tvOS 14.0, watchOS 7.0, *) {
                 return directory.appendingPathComponent(name, conformingTo: .data)
@@ -32,7 +32,7 @@ public extension FileManager {
         guard let directory else { return }
         
         var file: URL? {
-            if #available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *) {
+            if #available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, xrOS 1.0, *) {
                 return directory.appending(component: name)
             } else if #available(iOS 14.0, macOS 11.0, tvOS 14.0, watchOS 7.0, *) {
                 return directory.appendingPathComponent(name, conformingTo: .data)
@@ -56,7 +56,7 @@ public extension FileManager {
         guard let directory = directory else { return nil }
         
         var file: URL? {
-            if #available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *) {
+            if #available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, xrOS 1.0, *) {
                 return directory.appending(component: name)
             } else if #available(iOS 14.0, macOS 11.0, tvOS 14.0, watchOS 7.0, *) {
                 return directory.appendingPathComponent(name, conformingTo: .data)
@@ -81,7 +81,7 @@ public extension FileManager {
         guard let directory = directory else { return }
         
         var file: URL? {
-            if #available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *) {
+            if #available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, xrOS 1.0, *) {
                 return directory.appending(component: name)
             } else if #available(iOS 14.0, macOS 11.0, tvOS 14.0, watchOS 7.0, *) {
                 return directory.appendingPathComponent(name, conformingTo: .data)
