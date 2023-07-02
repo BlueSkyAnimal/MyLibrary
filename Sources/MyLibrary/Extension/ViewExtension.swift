@@ -29,11 +29,7 @@ public extension View {
     
     @ViewBuilder
     func transform<Content: View>(@ViewBuilder _ content: (Self) -> Content) -> some View {
-        if let content = content(self) as? _ConditionalContent<Self, EmptyView> {
-            content
-        } else {
-            self
-        }
+        content(self)
     }
 }
 
