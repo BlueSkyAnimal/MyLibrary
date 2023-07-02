@@ -9,8 +9,8 @@ import SwiftUI
 
 public extension FileManager {
     static func filePath(_ name: String, directory: SearchPathDirectory = .documentDirectory) -> URL? {
+        let name = name + ".json"
         let directory = FileManager.default.urls(for: directory, in: .userDomainMask).first
-        
         guard let directory else { return nil }
         
         var file: URL? {
@@ -27,8 +27,8 @@ public extension FileManager {
     }
     
     static func save(_ name: String, data: Data, directory: SearchPathDirectory = .documentDirectory) {
+        let name = name + ".json"
         let directory = FileManager.default.urls(for: directory, in: .userDomainMask).first
-        
         guard let directory else { return }
         
         var file: URL? {
@@ -40,7 +40,6 @@ public extension FileManager {
                 return URL(string: name, relativeTo: directory)
             }
         }
-        
         guard let file = file else { return }
         
         do {
@@ -51,8 +50,8 @@ public extension FileManager {
     }
     
     static func read(_ name: String, directory: SearchPathDirectory = .documentDirectory) -> Data? {
+        let name = name + ".json"
         let directory = FileManager.default.urls(for: directory, in: .userDomainMask).first
-        
         guard let directory = directory else { return nil }
         
         var file: URL? {
@@ -64,7 +63,6 @@ public extension FileManager {
                 return URL(string: name, relativeTo: directory)
             }
         }
-        
         guard let file = file else { return nil }
         
         do {
@@ -76,8 +74,8 @@ public extension FileManager {
     }
     
     static func remove(_ name: String, directory: SearchPathDirectory = .documentDirectory) {
+        let name = name + ".json"
         let directory = FileManager.default.urls(for: directory, in: .userDomainMask).first
-        
         guard let directory = directory else { return }
         
         var file: URL? {
@@ -89,7 +87,6 @@ public extension FileManager {
                 return URL(string: name, relativeTo: directory)
             }
         }
-        
         guard let file = file else { return }
         
         do {
