@@ -8,9 +8,9 @@
 import SwiftUI
 
 @available(iOS 13.0, macOS 11.0, tvOS 13.0, watchOS 6.0, xrOS 1.0, *)
-extension Scene {
+public extension Scene {
     @SceneBuilder
-    func transform(@SceneBuilder _ content: (Self) -> some Scene) -> some Scene {
+    public func transform(@SceneBuilder _ content: (Self) -> some Scene) -> some Scene {
         content(self)
     }
 }
