@@ -10,25 +10,7 @@ import SwiftUI
 @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, xrOS 1.0, *)
 public extension View {
     @ViewBuilder
-    func smartScroll() -> some View {
-        if #available(iOS 16.4, macOS 13.3, tvOS 16.4, watchOS 9.4, *) {
-            scrollBounceBehavior(.basedOnSize)
-        } else {
-            self
-        }
-    }
-    
-    @ViewBuilder
-    func hidden(_ isHidden: Bool) -> some View {
-        if isHidden {
-            hidden()
-        } else {
-            self
-        }
-    }
-    
-    @ViewBuilder
-    func transform<Content: View>(@ViewBuilder _ content: (Self) -> Content) -> some View {
+    func transform(@ViewBuilder _ content: (Self) -> some View) -> some View {
         content(self)
     }
 }
