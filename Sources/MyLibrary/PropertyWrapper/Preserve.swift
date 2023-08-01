@@ -28,9 +28,9 @@ public class Preserve {
         var data: Data? {
             switch store {
                 case .userDefaults(let store):
-                    store.data(forKey: name)
+                    return store.data(forKey: name)
                 case .fileManager(let directory):
-                    FileManager.read(name, directory: directory)
+                    return FileManager.read(name, directory: directory)
             }
         }
         
