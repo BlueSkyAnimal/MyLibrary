@@ -9,7 +9,7 @@ import SwiftUI
 
 #if os(macOS)
 @available(macOS 10.15, *)
-public struct PresentedWindowManager: NSViewRepresentable {
+public struct PresentationWindowManager: NSViewRepresentable {
     var action: (NSWindow) -> (Void)
     
     public func makeNSView(context: Context) -> some NSView {

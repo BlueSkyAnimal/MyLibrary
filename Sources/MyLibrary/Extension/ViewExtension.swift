@@ -32,13 +32,13 @@ public extension View {
     }
     
     @ViewBuilder
-    func presentedWindowManager(_ action: @escaping (NSWindow) -> (Void)) -> some View {
+    func presentationWindowManager(_ action: @escaping (NSWindow) -> (Void)) -> some View {
         if #available(macOS 12.0, *) {
             background {
-                PresentedWindowManager { action($0) }
+                PresentationWindowManager { action($0) }
             }
         } else {
-            background(PresentedWindowManager { action($0) })
+            background(PresentationWindowManager { action($0) })
         }
     }
 }
