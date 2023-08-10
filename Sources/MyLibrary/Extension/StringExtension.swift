@@ -8,6 +8,8 @@
 import SwiftUI
 
 public extension String {
+    @available(tvOS, unavailable)
+    @available(watchOS, unavailable)
     func copy() {
 #if os(iOS) || os(xrOS)
         UIPasteboard.general.string = self

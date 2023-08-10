@@ -25,7 +25,7 @@ public extension FileManager {
         return file
     }
     
-    static func save(_ name: String, data: Data, directory: SearchPathDirectory = .documentDirectory) {
+    static func save(_ name: String, data: Data, directory: SearchPathDirectory = .documentDirectory) throws {
         let directory = FileManager.default.urls(for: directory, in: .userDomainMask).first
         guard let directory else { return }
         
@@ -40,14 +40,10 @@ public extension FileManager {
         }
         guard let file = file else { return }
         
-        do {
-            try data.write(to: file, options: .atomic)
-        } catch {
-            print(error.localizedDescription)
-        }
+        try data.write(to: file, options: .atomic)
     }
     
-    static func item(_ name: String, directory: SearchPathDirectory = .documentDirectory) -> Data? {
+    static func item(_ name: String, directory: SearchPathDirectory = .documentDirectory) throws -> Data? {
         let directory = FileManager.default.urls(for: directory, in: .userDomainMask).first
         guard let directory = directory else { return nil }
         
@@ -62,15 +58,10 @@ public extension FileManager {
         }
         guard let file = file else { return nil }
         
-        do {
-            return try Data(contentsOf: file)
-        } catch {
-            print(error.localizedDescription)
-            return nil
-        }
+        return try Data(contentsOf: file)
     }
     
-    static func remove(_ name: String, directory: SearchPathDirectory = .documentDirectory) {
+    static func remove(_ name: String, directory: SearchPathDirectory = .documentDirectory) throws {
         let directory = FileManager.default.urls(for: directory, in: .userDomainMask).first
         guard let directory = directory else { return }
         
@@ -85,11 +76,7 @@ public extension FileManager {
         }
         guard let file = file else { return }
         
-        do {
-            try self.default.removeItem(at: file)
-        } catch {
-            print(error.localizedDescription)
-        }
+        try self.default.removeItem(at: file)
     }
 }
 

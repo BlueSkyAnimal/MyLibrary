@@ -14,26 +14,27 @@ public class Preserve {
         case fileManager(FileManager.SearchPathDirectory = .documentDirectory)
     }
     
-    public static func save(_ value: Encodable, key name: String, to store: Store = .fileManager(.documentDirectory)) {
-        guard let data = value.encoded() else { return }
+    public static func save(_ value: Encodable, key name: String, to store: Store = .fileManager(.documentDirectory)) throws {
+        guard let data = try value.encoded() else { return }
+        
         switch store {
             case .userDefaults(let store):
                 store.set(data, forKey: name)
             case .fileManager(let directory):
-                FileManager.save(name, data: data, directory: directory)
+                try FileManager.save(name, data: data, directory: directory)
         }
     }
     
-    public static func item<T: Codable>(key name: String, from store: Store = .fileManager(.documentDirectory)) -> T? {
-        var data: Data? {
+    public static func item<T: Codable>(key name: String, from store: Store = .fileManager(.documentDirectory)) throws -> T? {
+        func data() throws -> Data? {
             switch store {
                 case .userDefaults(let store):
                     return store.data(forKey: name)
                 case .fileManager(let directory):
-                    return FileManager.item(name, directory: directory)
+                    return try FileManager.item(name, directory: directory)
             }
         }
         
-        return data?.decoded(T.self)
+        return try data()?.decoded(T.self)
     }
 }

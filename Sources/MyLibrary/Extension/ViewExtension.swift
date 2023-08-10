@@ -15,14 +15,16 @@ public extension View {
     }
 }
 
-#if os(macOS)
 @available(macOS 10.15, *)
+@available(iOS, unavailable)
+@available(tvOS, unavailable)
+@available(watchOS, unavailable)
+@available(xrOS, unavailable)
 public extension View {
     @ViewBuilder
     func blurBackground() -> some View {
         if #available(macOS 13.0, *) {
-            self
-                .background(VisualEffectView().ignoresSafeArea())
+            self.background(VisualEffectView().ignoresSafeArea())
                 .scrollContentBackground(.hidden)
         } else if #available(macOS 11.0, *) {
             background(VisualEffectView().ignoresSafeArea())
@@ -42,4 +44,3 @@ public extension View {
         }
     }
 }
-#endif

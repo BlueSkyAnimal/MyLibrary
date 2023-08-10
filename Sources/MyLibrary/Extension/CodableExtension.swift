@@ -8,25 +8,15 @@
 import SwiftUI
 
 public extension Data {
-    func decoded<T: Codable>(_ type: T.Type = T.self, decoder: JSONDecoder = JSONDecoder()) -> T? {
-        do {
-            return try decoder.decode(T.self, from: self)
-        } catch {
-            print(error.localizedDescription)
-            return nil
-        }
+    func decoded<T: Codable>(_ type: T.Type = T.self, decoder: JSONDecoder = JSONDecoder()) throws -> T? {
+        return try decoder.decode(T.self, from: self)
     }
 }
 
 public extension Encodable {
-    func encoded(encoder: JSONEncoder = JSONEncoder()) -> Data? {
+    func encoded(encoder: JSONEncoder = JSONEncoder()) throws -> Data? {
         encoder.outputFormatting = .prettyPrinted
-        do {
-            return try encoder.encode(self)
-        } catch {
-            print(error.localizedDescription)
-            return nil
-        }
+        return try encoder.encode(self)
     }
 }
 

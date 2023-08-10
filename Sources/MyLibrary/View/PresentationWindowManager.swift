@@ -7,8 +7,11 @@
 
 import SwiftUI
 
-#if os(macOS)
 @available(macOS 10.15, *)
+@available(iOS, unavailable)
+@available(tvOS, unavailable)
+@available(watchOS, unavailable)
+@available(xrOS, unavailable)
 public struct PresentationWindowManager: NSViewRepresentable {
     var action: (NSWindow) -> (Void)
     
@@ -25,4 +28,3 @@ public struct PresentationWindowManager: NSViewRepresentable {
         if let window = nsView.window { action(window) }
     }
 }
-#endif
