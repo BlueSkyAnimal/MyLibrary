@@ -47,7 +47,7 @@ public extension FileManager {
         }
     }
     
-    static func read(_ name: String, directory: SearchPathDirectory = .documentDirectory) -> Data? {
+    static func item(_ name: String, directory: SearchPathDirectory = .documentDirectory) -> Data? {
         let directory = FileManager.default.urls(for: directory, in: .userDomainMask).first
         guard let directory = directory else { return nil }
         

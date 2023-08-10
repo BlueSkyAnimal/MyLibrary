@@ -24,13 +24,13 @@ public class Preserve {
         }
     }
     
-    public static func get<T: Codable>(key name: String, from store: Store = .fileManager(.documentDirectory)) -> T? {
+    public static func item<T: Codable>(key name: String, from store: Store = .fileManager(.documentDirectory)) -> T? {
         var data: Data? {
             switch store {
                 case .userDefaults(let store):
                     return store.data(forKey: name)
                 case .fileManager(let directory):
-                    return FileManager.read(name, directory: directory)
+                    return FileManager.item(name, directory: directory)
             }
         }
         
