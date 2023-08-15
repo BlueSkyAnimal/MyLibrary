@@ -15,11 +15,8 @@ public extension View {
     }
 }
 
+#if os(macOS)
 @available(macOS 10.15, *)
-@available(iOS, unavailable)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
-@available(xrOS, unavailable)
 public extension View {
     @ViewBuilder
     func blurBackground() -> some View {
@@ -44,3 +41,4 @@ public extension View {
         }
     }
 }
+#endif

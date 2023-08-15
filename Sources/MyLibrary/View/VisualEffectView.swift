@@ -7,11 +7,8 @@
 
 import SwiftUI
 
+#if os(macOS)
 @available(macOS 10.15, *)
-@available(iOS, unavailable)
-@available(tvOS, unavailable)
-@available(watchOS, unavailable)
-@available(xrOS, unavailable)
 struct VisualEffectView: NSViewRepresentable {
     func makeNSView(context: Context) -> NSVisualEffectView {
         let effectView = NSVisualEffectView()
@@ -21,3 +18,4 @@ struct VisualEffectView: NSViewRepresentable {
     
     func updateNSView(_ nsView: NSVisualEffectView, context: Context) {}
 }
+#endif
