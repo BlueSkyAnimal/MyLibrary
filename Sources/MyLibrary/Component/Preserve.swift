@@ -25,7 +25,7 @@ public class Preserve {
         }
     }
     
-    public static func item<T: Codable>(type: T.Type = T.self, key name: String, from store: Store = .fileManager(.documentDirectory)) throws -> T? {
+    public static func item<T: Codable>(_ type: T.Type = T.self, key name: String, from store: Store = .fileManager(.documentDirectory)) throws -> T? {
         func data() throws -> Data? {
             switch store {
                 case .userDefaults(let store):
