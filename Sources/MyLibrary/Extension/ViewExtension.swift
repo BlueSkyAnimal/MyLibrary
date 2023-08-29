@@ -19,14 +19,18 @@ public extension View {
 @available(macOS 10.15, *)
 public extension View {
     @ViewBuilder
-    func blurBackground() -> some View {
-        if #available(macOS 13.0, *) {
-            self.background(VisualEffectView().ignoresSafeArea())
-                .scrollContentBackground(.hidden)
-        } else if #available(macOS 11.0, *) {
-            background(VisualEffectView().ignoresSafeArea())
+    func blurBackground(_ blur: Bool = true) -> some View {
+        if blur {
+            if #available(macOS 13.0, *) {
+                self.background(VisualEffectView().ignoresSafeArea())
+                    .scrollContentBackground(.hidden)
+            } else if #available(macOS 11.0, *) {
+                background(VisualEffectView().ignoresSafeArea())
+            } else {
+                background(VisualEffectView().edgesIgnoringSafeArea(.all))
+            }
         } else {
-            background(VisualEffectView().edgesIgnoringSafeArea(.all))
+            self
         }
     }
     
