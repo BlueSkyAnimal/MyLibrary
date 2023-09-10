@@ -7,10 +7,10 @@
 
 import Foundation
 
-enum RequestError: LocalizedError {
+public enum RequestError: LocalizedError {
     case clientError(ClientError), serverError(ServerError), responseError, encodingError, decodingError
     
-    var errorDescription: String? {
+    public var errorDescription: String? {
         switch self {
             case .clientError(let clientError):
                 clientError.errorDescription
@@ -26,7 +26,7 @@ enum RequestError: LocalizedError {
     }
 }
 
-extension RequestError {
+public extension RequestError {
     enum ClientError: Int, LocalizedError {
         case badRequest = 400
         case unAuthorized = 401
@@ -58,13 +58,13 @@ extension RequestError {
         case requestHeaderFieldsTooLarge = 431
         case unavailableForLegalReasons = 451
         
-        var errorDescription: String? {
+        public var errorDescription: String? {
             return "Client Error: \(rawValue)"
         }
     }
 }
 
-extension RequestError {
+public extension RequestError {
     enum ServerError: Int, LocalizedError {
         case internalServerError = 500
         case notImpremented = 501
@@ -78,13 +78,13 @@ extension RequestError {
         case notExtended = 510
         case networkAuthenticationRequired = 511
         
-        var errorDescription: String? {
+        public var errorDescription: String? {
             return "Server Error: \(rawValue)"
         }
     }
 }
 
-extension URL {
+public extension URL {
     static func string(_ string: String) -> URL? {
         return URL(string: string)
     }
@@ -102,7 +102,7 @@ extension URL {
     }
 }
 
-extension URLRequest {
+public extension URLRequest {
     func get(headers: [String : String] = [:]) async -> Result<Data, RequestError> {
         var request = self
         request.allHTTPHeaderFields = headers
@@ -130,7 +130,7 @@ extension URLRequest {
     }
 }
 
-extension URLRequest {
+public extension URLRequest {
     func post(headers: [String : String] = [:], body: Data? = nil) async -> Result<Data, RequestError> {
         var request = self
         request.allHTTPHeaderFields = headers
