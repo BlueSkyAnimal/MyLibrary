@@ -11,9 +11,9 @@ public extension String {
     @available(tvOS, unavailable)
     @available(watchOS, unavailable)
     func copy() {
-#if os(iOS) || os(xrOS)
+#if canImport(UIKit)
         UIPasteboard.general.string = self
-#elseif os(macOS)
+#elseif canImport(AppKit)
         NSPasteboard.general.clearContents()
         NSPasteboard.general.setString(self, forType: .string)
 #endif

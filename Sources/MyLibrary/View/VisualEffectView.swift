@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-#if os(macOS)
+#if canImport(AppKit)
 @available(macOS 10.15, *)
 struct VisualEffectView: NSViewRepresentable {
     func makeNSView(context: Context) -> NSVisualEffectView {

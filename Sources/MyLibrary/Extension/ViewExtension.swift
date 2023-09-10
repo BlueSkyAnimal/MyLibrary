@@ -15,7 +15,7 @@ public extension View {
     }
 }
 
-#if os(macOS)
+#if canImport(AppKit)
 @available(macOS 10.15, *)
 public extension View {
     @ViewBuilder

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-#if os(macOS)
+#if canImport(AppKit)
 @available(macOS 10.15, *)
 public struct PresentationWindowManager: NSViewRepresentable {
     var action: (NSWindow) -> (Void)
