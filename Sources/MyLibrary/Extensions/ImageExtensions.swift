@@ -1,5 +1,5 @@
 //
-//  ImageExtension.swift
+//  ImageExtensions.swift
 //
 //
 //  Created by BlueSkyAnimal on 2023/09/07.

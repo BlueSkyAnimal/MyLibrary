@@ -1,5 +1,5 @@
 //
-//  BoolExtension.swift
+//  BoolExtensions.swift
 //
 //
 //  Created by BlueSkyAnimal on 2023/09/10.
