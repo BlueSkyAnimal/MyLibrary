@@ -9,7 +9,7 @@ import SwiftUI
 
 @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, xrOS 1.0, *)
 public struct NavigationContainer<Item, Label, Content>: View
-where Item: CaseIterable & Hashable & RawRepresentable<String>, Item.AllCases: RandomAccessCollection,
+where Item: CaseIterable & Hashable & RawRepresentable<LocalizedStringKey>, Item.AllCases: RandomAccessCollection,
       Label: View,
       Content: View
 {
@@ -70,12 +70,12 @@ public enum NavigationLayoutCategory {
     case stack(path: Binding<NavigationPath>), tab, split
 }
 
-public extension String {
-    static var appName: String {
+public extension LocalizedStringKey {
+    static var appName: LocalizedStringKey {
         guard let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String else {
             fatalError()
         }
-        return appName
+        return .init(appName)
     }
 }
 
@@ -102,14 +102,14 @@ public extension Optional {
 @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, xrOS 1.0, *)
 public extension View {
     @ViewBuilder
-    func withNavigationStack(title: String) -> some View {
+    func withNavigationStack(title: LocalizedStringKey) -> some View {
         NavigationStack {
             self.navigationTitle(title)
         }
     }
     
     @ViewBuilder
-    func withNavigationStack(title: String, path: Binding<NavigationPath>) -> some View {
+    func withNavigationStack(title: LocalizedStringKey, path: Binding<NavigationPath>) -> some View {
         NavigationStack(path: path) {
             self.navigationTitle(title)
         }
