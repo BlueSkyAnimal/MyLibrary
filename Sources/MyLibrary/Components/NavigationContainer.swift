@@ -16,6 +16,7 @@ where Item: CaseIterable & Hashable & RawRepresentable<LocalizedStringKey>, Item
     @Binding var sidebar: Item?
     var layout: NavigationLayoutCategory
     var item: Item.Type
+    var filter: [Item]?
     var label: (Item) -> Label
     var content: (Item) -> Content
     
@@ -23,21 +24,28 @@ where Item: CaseIterable & Hashable & RawRepresentable<LocalizedStringKey>, Item
         sidebar: Binding<Item?>,
         layout: NavigationLayoutCategory,
         item: Item.Type,
+        filter: [Item]? = nil,
         @ViewBuilder label: @escaping (Item) -> Label,
         @ViewBuilder content: @escaping (Item) -> Content
     ) {
         self._sidebar = sidebar
         self.layout = layout
         self.item = item
+        self.filter = filter
         self.label = label
         self.content = content
+    }
+    
+    var filtered: [Item] {
+        guard let filter else { return item.allCases as! [Item] }
+        return item.allCases.filter { filter.contains($0) }
     }
     
     public var body: some View {
         switch layout {
             case .stack(let path):
                 List {
-                    item.allCasesView { item in
+                    ForEach(filtered, id: \.self) { item in
                         NavigationLink(value: item) { label(item) }
                     }
                 }
@@ -45,7 +53,7 @@ where Item: CaseIterable & Hashable & RawRepresentable<LocalizedStringKey>, Item
                 .withNavigationStack(title: sidebar?.rawValue ?? .appName, path: path)
             case .tab:
                 TabView(selection: $sidebar) {
-                    item.allCasesView { item in
+                    ForEach(filtered, id: \.self) { item in
                         content(item).tabItem { label(item) }
                     }
                     .withNavigationStack(title: sidebar?.rawValue ?? .appName)
@@ -53,7 +61,7 @@ where Item: CaseIterable & Hashable & RawRepresentable<LocalizedStringKey>, Item
             case .split:
                 NavigationSplitView {
                     List(selection: $sidebar) {
-                        item.allCasesView { label($0) }
+                        ForEach(filtered, id: \.self) { label($0) }
                     }
                     .withNavigationStack(title: .appName)
                 } detail: {
