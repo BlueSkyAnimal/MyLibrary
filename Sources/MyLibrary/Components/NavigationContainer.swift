@@ -54,8 +54,9 @@ where Item: CaseIterable & Hashable & RawRepresentable<LocalizedStringKey>, Item
             case .tab:
                 TabView(selection: $sidebar) {
                     ForEach(filtered, id: \.self) { item in
-                        content(item).tabItem { label(item) }
+                        content(item)
                             .withNavigationStack(title: sidebar?.rawValue ?? .appName)
+                            .tabItem { label(item) }
                             .tag(item)
                     }
                 }
