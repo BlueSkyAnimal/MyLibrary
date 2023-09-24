@@ -55,8 +55,9 @@ where Item: CaseIterable & Hashable & RawRepresentable<LocalizedStringKey>, Item
                 TabView(selection: $sidebar) {
                     ForEach(filtered, id: \.self) { item in
                         content(item).tabItem { label(item) }
+                            .withNavigationStack(title: sidebar?.rawValue ?? .appName)
+                            .tag(item)
                     }
-                    .withNavigationStack(title: sidebar?.rawValue ?? .appName)
                 }
             case .split:
                 NavigationSplitView {
