@@ -5,11 +5,11 @@ import PackageDescription
 let package = Package(
     name: "MyLibrary",
     platforms: [
-        .iOS(.v13),
-        .macCatalyst(.v13),
+        .iOS(.v14),
+        .macCatalyst(.v14),
         .macOS(.v11),
-        .tvOS(.v13),
-        .watchOS(.v6),
+        .tvOS(.v14),
+        .watchOS(.v7),
         .visionOS(.v1),
     ],
     products: [

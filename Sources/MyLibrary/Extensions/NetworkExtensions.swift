@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum RequestError: LocalizedError {
+public enum RequestError: LocalizedError, Codable {
     case clientError(ClientError), serverError(ServerError), responseError, encodingError, decodingError
     
     public var errorDescription: String? {
@@ -27,7 +27,7 @@ public enum RequestError: LocalizedError {
 }
 
 public extension RequestError {
-    enum ClientError: Int, LocalizedError {
+    enum ClientError: Int, LocalizedError, Codable {
         case badRequest = 400
         case unAuthorized = 401
         case paymentRequired = 402
@@ -65,7 +65,7 @@ public extension RequestError {
 }
 
 public extension RequestError {
-    enum ServerError: Int, LocalizedError {
+    enum ServerError: Int, LocalizedError, Codable {
         case internalServerError = 500
         case notImpremented = 501
         case badGateway = 502

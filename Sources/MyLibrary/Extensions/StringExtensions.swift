@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-public extension String {
+public extension CustomStringConvertible {
     @available(tvOS, unavailable)
     @available(watchOS, unavailable)
-    func copy() {
+    func copyToClipboard() {
 #if canImport(UIKit)
-        UIPasteboard.general.string = self
+        UIPasteboard.general.string = self.description
 #elseif canImport(AppKit)
         NSPasteboard.general.clearContents()
-        NSPasteboard.general.setString(self, forType: .string)
+        NSPasteboard.general.setString(self.description, forType: .string)
 #endif
     }
 }
